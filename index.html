@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Staff Portal — Guernsey Yacht Club</title>
+<meta name="description" content="Central staff directory of Guernsey Yacht Club's event booking pages and admin tools.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0F2A4A; --navy-dark:#0A1D34; --indigo:#1E5088; --sky:#4C93D9;
+    --gold:#C9A227; --gold-bright:#E9B84A;
+    --ink:#1B2733; --body:#44505C; --muted:#6B7684;
+    --paper:#F6F7F9; --card:#FFFFFF; --rule:#E3E7EC;
+    --key:#8A5A00; --key-bg:#FCF2DA; --key-border:#EBD8A6;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--paper);color:var(--body);
+    font-family:"Source Sans 3",-apple-system,"Segoe UI",system-ui,sans-serif;
+    font-size:16px;line-height:1.55}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+
+  /* ---- Masthead ---- */
+  header.masthead{background:linear-gradient(180deg,var(--navy) 0%,var(--navy-dark) 100%);
+    padding:36px 0 30px;color:#fff}
+  .eyebrow{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--gold-bright);margin:0 0 10px}
+  header.masthead h1{font-family:"Oswald",sans-serif;font-weight:600;font-size:clamp(28px,5vw,40px);
+    margin:0 0 8px;letter-spacing:.01em;display:flex;align-items:center;gap:12px}
+  .burgee{width:34px;height:22px;flex:none}
+  header.masthead p{margin:0;max-width:60ch;color:#C9D6E6;font-size:15.5px}
+  .goldrule{height:4px;background:linear-gradient(90deg,var(--gold) 0%,var(--gold-bright) 100%)}
+
+  main{padding:36px 0 60px}
+
+  .section-title{font-family:"Oswald",sans-serif;font-weight:600;color:var(--navy);
+    font-size:14px;letter-spacing:.12em;text-transform:uppercase;
+    margin:38px 0 16px;padding-bottom:8px;border-bottom:2px solid var(--rule)}
+  .section-title:first-child{margin-top:0}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+
+  .card{background:var(--card);border:1px solid var(--rule);border-radius:10px;
+    padding:22px 22px 20px;display:flex;flex-direction:column;
+    box-shadow:0 1px 2px rgba(15,42,74,.04)}
+  .card h2{font-family:"Oswald",sans-serif;font-weight:600;color:var(--ink);
+    font-size:19px;margin:0 0 4px;letter-spacing:-.005em}
+  .card .tagline{font-size:13px;color:var(--muted);margin:0 0 12px;
+    font-weight:600;letter-spacing:.02em}
+  .card p.desc{margin:0 0 16px;font-size:14.5px;color:var(--body)}
+  .card .primary-link{display:inline-flex;align-items:center;gap:6px;
+    font-weight:600;color:var(--indigo);text-decoration:none;font-size:14.5px;
+    margin-bottom:14px}
+  .card .primary-link:hover{text-decoration:underline}
+  .card .primary-link .arrow{font-size:12px}
+
+  .subpages{list-style:none;margin:0;padding-top:14px;border-top:1px solid var(--rule);
+    display:flex;flex-direction:column;gap:9px}
+  .subpages li{font-size:13.5px;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 8px}
+  .subpages a{color:var(--indigo);text-decoration:none;font-weight:600}
+  .subpages a:hover{text-decoration:underline}
+  .subpages .sp-desc{color:var(--muted)}
+  .badge{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.06em;
+    text-transform:uppercase;padding:2px 7px;border-radius:4px;line-height:1.5;flex:none}
+  .badge.key{background:var(--key-bg);color:var(--key);border:1px solid var(--key-border)}
+
+  .note{margin-top:18px;padding:14px 16px;background:#F0F4F8;border:1px solid var(--rule);
+    border-radius:8px;font-size:13.5px;color:var(--muted)}
+  .note code{font-family:"IBM Plex Mono",monospace;font-size:12.5px;background:#fff;
+    border:1px solid var(--rule);border-radius:4px;padding:1px 5px}
+
+  footer{padding:26px 0 40px;color:var(--muted);font-size:13px;border-top:1px solid var(--rule)}
+  footer a{color:var(--indigo)}
+
+  @media (max-width:480px){
+    .wrap{padding:0 16px}
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <p class="eyebrow">Staff Portal</p>
+    <h1>
+      <svg class="burgee" viewBox="0 0 34 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M0 0H34L20 11L34 22H0V0Z" fill="#E9B84A"/>
+        <path d="M0 0H14V22H0V0Z" fill="#0F2A4A"/>
+      </svg>
+      Guernsey Yacht Club — Site Directory
+    </h1>
+    <p>One place to find every booking page and admin tool we've built for club events — what each one does, and the staff-only pages inside it.</p>
+  </div>
+</header>
+<div class="goldrule"></div>
+
+<main class="wrap">
+
+  <h2 class="section-title">Event booking pages</h2>
+  <div class="grid">
+
+    <div class="card">
+      <h2>Wine Tasting Evening</h2>
+      <p class="tagline">Saturday 26 September, 6.30pm at the GYC</p>
+      <p class="desc">Poster-style booking page for the wine tasting evening — 10 wines to taste, charcuterie &amp; cheese, £30 a head, 40 places. Pay-on-the-night, no online checkout.</p>
+      <a class="primary-link" href="https://gycwine.netlify.app" target="_blank" rel="noopener">Open booking page <span class="arrow">↗</span></a>
+      <ul class="subpages">
+        <li><a href="https://gycwine.netlify.app" target="_blank" rel="noopener">Booking form</a><span class="sp-desc">— guest sign-up, live availability count</span></li>
+        <li><a href="https://gycwine.netlify.app/admin" target="_blank" rel="noopener">/admin</a><span class="badge key">Needs admin key</span><span class="sp-desc">— live guest list, edit/delete bookings, add a phone booking, resend confirmations</span></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Air Display &amp; Club BBQ</h2>
+      <p class="tagline">Wednesday 9 September 2026</p>
+      <p class="desc">Booking page for the Guernsey Air Display &amp; Club BBQ. Places are paid for online — a place is only held once SumUp confirms the card payment went through.</p>
+      <a class="primary-link" href="https://gyc-air-display-bbq.netlify.app" target="_blank" rel="noopener">Open booking page <span class="arrow">↗</span></a>
+      <ul class="subpages">
+        <li><a href="https://gyc-air-display-bbq.netlify.app" target="_blank" rel="noopener">Booking &amp; payment form</a><span class="sp-desc">— running order, menu, SumUp checkout</span></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>September BBQ Nights</h2>
+      <p class="tagline">Sat 5 Sept (Chris Morris Memorial) &amp; Sat 12 Sept (IsleGP), 17:30</p>
+      <p class="desc">RSVP-only booking for two BBQ nights with live music. No online payment — pay on the night. One booking can cover both dates.</p>
+      <a class="primary-link" href="https://bbqbooking.netlify.app" target="_blank" rel="noopener">Open booking page <span class="arrow">↗</span></a>
+      <ul class="subpages">
+        <li><a href="https://bbqbooking.netlify.app" target="_blank" rel="noopener">Booking form</a><span class="sp-desc">— pick either or both nights, adults/under‑16, dietary notes</span></li>
+        <li><a href="https://bbqbooking.netlify.app/edit" target="_blank" rel="noopener">/edit</a><span class="sp-desc">— guest's own amend/cancel link (emailed on booking)</span></li>
+        <li><a href="https://bbqbooking.netlify.app/manage" target="_blank" rel="noopener">/manage</a><span class="badge key">Needs club key</span><span class="sp-desc">— per-night guest lists, cancel bookings, CSV export (alias: <code>/door</code>)</span></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>JOG Dinner</h2>
+      <p class="tagline">Saturday 29 August, arrivals from 17:00</p>
+      <p class="desc">Booking form for the JOG dinner, £16.95 a head. Same payment-guaranteed model as the Air Display &amp; BBQ page — no place is held until SumUp confirms the money arrived.</p>
+      <a class="primary-link" href="https://gyc-jog-dinner.netlify.app" target="_blank" rel="noopener">Open booking page <span class="arrow">↗</span></a>
+      <ul class="subpages">
+        <li><a href="https://gyc-jog-dinner.netlify.app" target="_blank" rel="noopener">Booking &amp; payment form</a><span class="sp-desc">— boat &amp; crew details, menu choices, SumUp checkout</span></li>
+        <li><span>confirmed page</span><span class="sp-desc">— shown after SumUp payment succeeds</span></li>
+        <li><a href="https://gyc-jog-dinner.netlify.app/kitchen" target="_blank" rel="noopener">/kitchen</a><span class="badge key">Needs club key</span><span class="sp-desc">— paid bookings by boat, dish totals for the galley, CSV export</span></li>
+        <li><a href="https://gyc-jog-dinner.netlify.app/manage" target="_blank" rel="noopener">/manage</a><span class="badge key">Needs club key</span><span class="sp-desc">— add a boat by hand, resend emails, recheck a payment, void a booking</span></li>
+        <li><a href="https://gyc-jog-dinner.netlify.app/reconcile" target="_blank" rel="noopener">/reconcile</a><span class="badge key">Needs club key</span><span class="sp-desc">— sweep every unpaid booking against SumUp in one go</span></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>GYC EGM 2026 — Proxy Voting</h2>
+      <p class="tagline">Extraordinary General Meeting</p>
+      <p class="desc">Proxy voting form for members who can't attend the EGM in person, so their vote is still counted.</p>
+      <a class="primary-link" href="https://gyc-egm-2026-proxy.netlify.app" target="_blank" rel="noopener">Open proxy form <span class="arrow">↗</span></a>
+      <ul class="subpages">
+        <li><a href="https://gyc-egm-2026-proxy.netlify.app" target="_blank" rel="noopener">Proxy voting form</a><span class="sp-desc">— single-page form, submissions go to the club</span></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <h2 class="section-title">Event booking platform</h2>
+  <div class="grid">
+
+    <div class="card">
+      <h2>Dinner Dance (events platform)</h2>
+      <p class="tagline">General-purpose social event booking tool</p>
+      <p class="desc">Not just the dinner dance — this is the reusable platform for club social events. Staff create and publish an event (optionally drafted by AI from a short description), and each event gets its own shareable booking link. Organisers book a table, add guests and menu choices, and can amend later via a private link — no accounts needed. Payment is handled outside the app, via Adfin, from staff's exported data.</p>
+      <a class="primary-link" href="https://gyc-dinner-dance.netlify.app" target="_blank" rel="noopener">Open platform <span class="arrow">↗</span></a>
+      <ul class="subpages">
+        <li><span>/e/&lt;event-slug&gt;</span><span class="sp-desc">— an organiser's booking page for one published event</span></li>
+        <li><a href="https://gyc-dinner-dance.netlify.app/admin" target="_blank" rel="noopener">/admin</a><span class="badge key">Staff login</span><span class="sp-desc">— staff dashboard: list events, publish, export bookings</span></li>
+        <li><span>New/edit event</span><span class="badge key">Staff login</span><span class="sp-desc">— reached from the dashboard; draft an event by hand or via AI assist</span></li>
+        <li><span>Staff sign in</span><span class="sp-desc">— password login for admins/editors</span></li>
+        <li><span>Create your account</span><span class="sp-desc">— one-time bootstrap for the first staff account; disables itself after use</span></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="note">
+    Pages marked <span class="badge key">Needs club key / login</span> are staff-only — you'll need the club access key, admin key, or staff login for that site (from whoever set it up, or the Netlify environment variables for that project). They aren't linked with the key included, so this page is safe to share more widely among staff.
+  </div>
+
+</main>
+
+<footer class="wrap">
+  Guernsey Yacht Club · Castle Emplacement, St Peter Port, GY1 1AU · 01481 722838 · <a href="mailto:events@gyc.org.gg">events@gyc.org.gg</a>
+</footer>
+
+</body>
+</html>
